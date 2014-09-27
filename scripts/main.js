@@ -1,12 +1,17 @@
+var people = $('.button').map(function(idx, el) {
+  return el.id;
+}).toArray();
+chatPings.createNamedChannels(people);
+
     var processResults = function(results) {
       console.log("Remote file parsed!", results);
-      var data = results.data
+      var data = results.data;
       var resultsLength = data.length;
       for (var i = 0; i < resultsLength; i++) {
-        row = data[i]
+        row = data[i];
         setTimeout(makeCircle, parseInt(row[4] * 100), row[1]);
       }
-    }
+    };
 
     Papa.parse("/hipchat.out", {
       download: true,
@@ -33,12 +38,14 @@
         });
       }
 
-      x = 0
-      y = 0
+      x = 0;
+      y = 0;
 
       //set the position and add class .animate
       drop.css({
         top: y + 'px',
         left: x + 'px'
       }).addClass("animate");
+
+      chatPings.playSound(elementName);
     };
